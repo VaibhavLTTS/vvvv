@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Project</title>
+    <style>
+        img {
+            border-radius: 50%;
+        }
+        .column {
+            float: left;
+            width: 32%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        body {
+            background-image: url("med.jpg");
+            text-align: center;
+            width:auto;
+            height:auto;
+        }
+        .a
+        {
+           
+  text-align: center;
+  margin-left:auto;
+  margin-right: auto;
+  text-decoration: none;
+  color: rgb(177, 4, 4);
+  width: 150px;
+  height: 60px;
+  background-color: rgb(0, 8, 12);
+  position: relative;
+  margin: 30px;
+  top: 100px;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 15px 0px 0px darken(rgb(23, 19, 247), 5%), 0px 0px 20px 0px #bbb
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Patient Health Monitor</h1>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <header style="align-items:center">
+        <div class="row">
+            <div class="column">
+                <input type="image" src="hr.jpg" width="80" height="80" onClick="window.location.href='homepage.html'" />
+                <figcaption>PATIENT HEART RATE</figcaption>
+            </div>
+            <div class="column">
+                <input type="image" src="bp1.jpg" width="80" height="80" onClick="window.location.href='homepage.html'" />
+                <figcaption>PATIENT BLOOD PRESSURE</figcaption>
+            </div>
+            <div class="column">
+                <input type="image" src="bo.jpg" width="80" height="80" onClick="window.location.href='homepage.html'" />
+                <figcaption>PATIENT BODY OXYGEN LEVEL</figcaption>
+            </div>
+        </div>
+
+
+
+    </header>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer class="footer">
+        <div class="container"></div>
+        <div class="row">
+            <div class="footer_col">
+
+                <ul>
+                    <li><h2> <a href="aboutus.html">About Us</a></h2></li><br />
+                    <li><h2> <a href="contactus.html">ContactUs</a></h2></li>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
