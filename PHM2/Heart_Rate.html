@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var dataPoints1 = [];
+var dataPoints2 = [];
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	zoomEnabled: true,
+	title: {
+		text: "Patient Heart Rate Data"
+	},
+	
+	axisY:{
+		prefix: " "
+	}, 
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor:"pointer",
+		verticalAlign: "top",
+		fontSize: 22,
+		fontColor: "dimGrey",
+		itemclick : toggleDataSeries
+	},
+	data: [{ 
+		type: "line",
+		xValueType: "dateTime",
+		yValueFormatString: "####.00",
+		xValueFormatString: "hh:mm:ss TT",
+		showInLegend: true,
+		name: "Patient 1",
+		dataPoints: dataPoints1
+		},
+		{				
+			type: "line",
+			xValueType: "dateTime",
+			yValueFormatString: "####.00",
+			showInLegend: true,
+			name: "Patient 2" ,
+			dataPoints: dataPoints2
+	}]
+});
+
+function toggleDataSeries(e) {
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else {
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+
+var updateInterval = 3000;
+
+var yValue1 = 60; 
+var yValue2 = 120;
+var newDataCount = 6;
+var xValue = 60;
+var yValue = 120;
+
+var time = new Date;
+
+time.setHours(new Date().getHours());
+time.setMinutes(new Date().getMinutes());
+time.setSeconds(new Date().getSeconds());
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+function updateChart(count) {
+
+
+
+	count = count || 1;
+	var deltaY1, deltaY2;
+	for (var i = 0; i < count; i++) {
+		time.setTime(time.getTime()+ updateInterval);
+		
+ 
+	yValue1 = getRndInteger(60,120);
+	yValue2 = getRndInteger(60,120);
+
+	
+	dataPoints1.push({
+		x: time.getTime(),
+		y: getRndInteger(60,120)	});
+	dataPoints2.push({
+		x: time.getTime(),
+		y: getRndInteger(60,120)
+	});
+	}
+
+	
+	chart.options.data[0].legendText = " Patient 1 " ;
+	chart.options.data[1].legendText = " Patient 2 " ; 
+	chart.render();
+}
+
+updateChart(5);	
+setInterval(function(){updateChart()}, updateInterval);
+
+}
+</script>
+<a href="home.html" >Home</a>
+<button onclick="myFunction()">Check Status</button>
+<script>
+	function myFunction() {
+	  alert("Patients are in normal mode!");
+	}
+	</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
